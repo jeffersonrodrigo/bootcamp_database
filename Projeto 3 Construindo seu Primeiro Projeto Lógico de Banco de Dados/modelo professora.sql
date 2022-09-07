@@ -113,3 +113,5 @@ create table productSupplier(
     constraint fk_product_supplier_supplier foreign key (idPsSupplier) references supplier(idSupplier),
     constraint fk_product_supplier_product foreign key (idPsProduct) references product(idProduct)
 );
+
+desc productSupplier;
