@@ -4,13 +4,7 @@ use ecommerce;
 
 -- criar tabela cliente
 create table client(
-		idClient int auto_increment primary key,
-        Fname varchar(10),
-        Minit varchar(3),
-        Lname varchar(20),
-        CPF char(11) not null,
-        Address varchar(30),
-        constraint unique_cpf_client unique (CPF)
+		idClient int auto_increment primary key
 );
 desc client;
 -- criar tabela produto
@@ -112,4 +106,21 @@ create table productSupplier(
     primary key (idPsSupplier, idPsProduct),
     constraint fk_product_supplier_supplier foreign key (idPsSupplier) references supplier(idSupplier),
     constraint fk_product_supplier_product foreign key (idPsProduct) references product(idProduct)
+);
+
+create table physicalPerson(
+		idPhysicalPerson int auto_increment primary key,
+        Fname varchar(20) not null,
+        Lname varchar(20) not null,
+        CPF char(11) not null,
+        Address varchar(30),
+        constraint unique_cpf_client unique (CPF)
+);
+
+create table legalPerson(
+		idLegalPerson int auto_increment primary key,
+        CompanyName varchar(40) not null,
+        CNPJ char(15) not null,
+        Address varchar(30),
+        constraint unique_cnpj_legalPerson unique (CNPJ)
 );

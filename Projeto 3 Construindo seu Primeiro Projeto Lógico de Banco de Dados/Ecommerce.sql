@@ -20,7 +20,7 @@ create table product(
 	idProduct int auto_increment primary key,
     Pname varchar(10) not null,
     classification_kids  bool default false,
-    category enum ('Eletrônico', 'Vestimenta', 'Brinquedo', 'Alimentos', 'Móveis') not null,
+    gategory enum ('Eletrônico', 'Vestimenta', 'Brinquedo', 'Alimentos', 'Móveis') not null,
     avaliação float,
     size varchar(10)
 );
@@ -112,4 +112,21 @@ create table productSupplier(
     primary key (idPsSupplier, idPsProduct),
     constraint fk_product_supplier_supplier foreign key (idPsSupplier) references supplier(idSupplier),
     constraint fk_product_supplier_product foreign key (idPsProduct) references product(idProduct)
+);
+
+create table physicalPerson(
+		idPhysicalPerson int auto_increment primary key,
+        Fname varchar(20) not null,
+        Lname varchar(20) not null,
+        CPF char(11) not null,
+        Address varchar(30),
+        constraint unique_cpf_physicalPerson unique (CPF)
+);
+
+create table legalPerson(
+		idLegalPerson int auto_increment primary key,
+        CompanyName varchar(20) not null,
+        CNPJ char(15) not null,
+        Address varchar(30),
+        constraint unique_cnpj_legalPerson unique (CNPJ)
 );
